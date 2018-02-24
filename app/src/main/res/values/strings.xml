@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Find Movie</string>
+
+    <string name="description">Description: </string>
+    <string name="detail">Detail </string>
+    <string name="share">Share </string>
 </resources>
