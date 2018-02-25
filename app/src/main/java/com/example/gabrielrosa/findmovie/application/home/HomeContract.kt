@@ -7,7 +7,7 @@ import com.example.gabrielrosa.findmovie.application.common.entity.Movie
  */
 interface HomeContract {
 
-    interface view {
+    interface View {
         fun showMovies(movie :List<Movie>)
         fun showNoMovies()
 
@@ -17,7 +17,7 @@ interface HomeContract {
         fun hideLoader()
     }
 
-    interface presenter {
+    interface Presenter {
         fun loadMovies(title :String)
     }
 

@@ -5,16 +5,22 @@
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <TextView
-        android:id="@+id/initial_text"
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/moviesToolBar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:text="Hello World!"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center|top"
-        android:gravity="center"
-        />
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary">
+
+        <android.support.v7.widget.SearchView
+            android:id="@+id/moviesSearchView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@android:color/white"
+            />
+
+    </android.support.v7.widget.Toolbar>
 
     <RelativeLayout
         android:layout_width="match_parent"
