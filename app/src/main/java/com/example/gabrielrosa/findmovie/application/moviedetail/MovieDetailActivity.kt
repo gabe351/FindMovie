@@ -1,17 +1,21 @@
-package com.example.gabrielrosa.findmovie.application.home
+package com.example.gabrielrosa.findmovie.application.moviedetail
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.example.gabrielrosa.findmovie.R
 
 /**
- * Created by gabrielrosa on 24/02/18.
+ * Created by gabrielrosa on 25/02/18.
  */
-class HomeActivity: AppCompatActivity() {
+class MovieDetailActivity: AppCompatActivity() {
+
+    companion object {
+        val MOVIE_ID = "MOVIE_ID"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.home_activity)
+        setContentView(R.layout.movie_detail_actitivity)
 
         loadFragment()
     }
@@ -19,7 +23,7 @@ class HomeActivity: AppCompatActivity() {
     private fun loadFragment() {
         supportFragmentManager
                 .beginTransaction()
-                .add(R.id.homeScreenContent, HomeFragment(), this.javaClass.simpleName)
+                .add(R.id.movieDetailContent, MovieDetailFragment(), this.javaClass.simpleName)
                 .commit()
     }
 }
