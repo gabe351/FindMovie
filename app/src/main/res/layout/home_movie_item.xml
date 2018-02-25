@@ -68,6 +68,9 @@
                     android:id="@+id/movieDescription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:maxLength="120"
                     tools:text="Temos um filme aqui com uma description e n sei q mais lá e tudo mais e tal e tudo"
                     />
             </LinearLayout>

@@ -24,6 +24,11 @@ class MoviesAdapter(): RecyclerView.Adapter<MovieItemViewHolder>() {
         this.context = context
     }
 
+    fun replaceData(list: List<Movie>) {
+        movies = list
+        notifyDataSetChanged()
+    }
+
     override fun getItemCount(): Int {
         return movies.size
     }
@@ -34,10 +39,10 @@ class MoviesAdapter(): RecyclerView.Adapter<MovieItemViewHolder>() {
         holder?.movieTitle?.text       = movie.originalTitle
         holder?.movieDescription?.text = movie.overview
 
-        val imageBaseUrl: String = "https://image.tmdb.org/t/p/w780"
-        val url = imageBaseUrl.plus(movie?.backdropPath)
-
-        Picasso.with(context).load(url).into(holder?.movieImage)
+        Picasso.with(context)
+                .load(buildImageUrl(movie.backdropPath))
+                .placeholder(R.drawable.shape_image_place_holder)
+                .into(holder?.movieImage)
 
 //        TODO: Implement click on buttons
     }

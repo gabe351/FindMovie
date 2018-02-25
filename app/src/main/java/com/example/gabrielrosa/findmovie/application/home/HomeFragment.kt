@@ -8,7 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.gabrielrosa.findmovie.R
 import com.example.gabrielrosa.findmovie.application.common.entity.Movie
+import com.example.gabrielrosa.findmovie.application.common.injection.InjectionUseCase
 import com.example.gabrielrosa.findmovie.application.home.adapter.MoviesAdapter
+import com.example.gabrielrosa.findmovie.application.home.usecase.GetMovies
+import com.example.gabrielrosa.findmovie.infrastructure.remote.movie.apidatasource.MovieApiDataSourceImpl
+import com.example.gabrielrosa.findmovie.infrastructure.remote.movie.remotedatasource.MovieRemoteDataSourceImpl
 import kotlinx.android.synthetic.main.home_fragment.*
 
 /**
@@ -16,11 +20,12 @@ import kotlinx.android.synthetic.main.home_fragment.*
  */
 class HomeFragment: Fragment(), HomeContract.view {
 
-
-    private var moviesAdapter: MoviesAdapter? = null
+    private var moviesAdapter: MoviesAdapter?       = null
+    private var mPresenter: HomeContract.presenter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        mPresenter = HomePresenter(this, InjectionUseCase.provideGetMovies())
     }
 
 
@@ -36,6 +41,7 @@ class HomeFragment: Fragment(), HomeContract.view {
 
         initial_text.text = "Hello World from fragment"
 
+        mPresenter?.loadMovies("bat")
 
         moviesRecyclerView.adapter       = moviesAdapter
         moviesRecyclerView.layoutManager = LinearLayoutManager(context)
@@ -43,7 +49,7 @@ class HomeFragment: Fragment(), HomeContract.view {
     }
 
     override fun showMovies(movie: List<Movie>) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        moviesAdapter?.replaceData(movie)
     }
 
     override fun showNoMovies() {
@@ -65,8 +71,8 @@ class HomeFragment: Fragment(), HomeContract.view {
 
     private fun buildFakeMovies() : List<Movie> {
 
-        val a = Movie(1, "Titulo 1", "/3iEciJiyczWPJ9770FHwRC3wokp.jpg", "Aqui temos o review do filme com um texto legal e tal na sua sessão da tarde")
-        val b = Movie(2, "Titulo 1", "/3iEciJiyczWPJ9770FHwRC3wokp.jpg", "Aqui temos o review do filme com um texto legal e tal na sua sessão da tarde")
+        val a = Movie(1, "Duro de matar", "/3iEciJiyczWPJ9770FHwRC3wokp.jpg", "Aqui temos o review do filme com um texto legal e tal na sua sessão da tarde")
+        val b = Movie(2, "Xand e o mistério da xuxa", "/uRz6KgauShQ0HOESoJnOhLp5Wkh.jpg", "Aqui temos o review do filme com um texto legal e tal na sua sessão da tarde")
         val c = Movie(3, "Titulo 1", "/3iEciJiyczWPJ9770FHwRC3wokp.jpg", "Aqui temos o review do filme com um texto legal e tal na sua sessão da tarde")
         val d = Movie(4, "Titulo 1", "/3iEciJiyczWPJ9770FHwRC3wokp.jpg", "Aqui temos o review do filme com um texto legal e tal na sua sessão da tarde")
 
