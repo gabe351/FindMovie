@@ -1,6 +1,7 @@
 package com.example.gabrielrosa.findmovie.infrastructure.remote.movie.remotedatasource
 
 import com.example.gabrielrosa.findmovie.application.common.entity.Movie
+import com.example.gabrielrosa.findmovie.infrastructure.model.MovieDetailResponse
 import com.example.gabrielrosa.findmovie.infrastructure.model.MovieResponse
 import com.example.gabrielrosa.findmovie.infrastructure.remote.BaseCallback
 import com.example.gabrielrosa.findmovie.infrastructure.remote.movie.apidatasource.MovieApiDataSourceImpl
@@ -34,7 +35,21 @@ class MovieRemoteDataSourceImpl(private val api: MovieApiDataSourceImpl): MovieR
         })
     }
 
-    override fun loadMovie(movieId: Int, apiCallback: BaseCallback.ApiCaseCallback<Movie>) {
+    override fun loadMovie(movieId: Int, apiCallback: BaseCallback.ApiCaseCallback<MovieDetailResponse>) {
+        val call = api.build().loadMovie(movieId, API_KEY)
 
+        call.enqueue(object: Callback<MovieDetailResponse?> {
+            override fun onResponse(call: Call<MovieDetailResponse?>?, response: Response<MovieDetailResponse?>?) {
+                response.let {
+                    if (it != null) {
+                        apiCallback.onSuccess(it.body()!!)
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<MovieDetailResponse?>?, t: Throwable?) {
+                apiCallback.onError()
+            }
+        })
     }
 }

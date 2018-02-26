@@ -1,6 +1,7 @@
 package com.example.gabrielrosa.findmovie.infrastructure.remote.movie.remotedatasource
 
 import com.example.gabrielrosa.findmovie.application.common.entity.Movie
+import com.example.gabrielrosa.findmovie.infrastructure.model.MovieDetailResponse
 import com.example.gabrielrosa.findmovie.infrastructure.remote.BaseCallback
 
 /**
@@ -9,6 +10,6 @@ import com.example.gabrielrosa.findmovie.infrastructure.remote.BaseCallback
 interface MovieRemoteDataSource {
 
     fun loadMovies(query: String, apiCallback: BaseCallback.ApiCaseCallback<List<Movie>>)
-    fun loadMovie(movieId: Int, apiCallback: BaseCallback.ApiCaseCallback<Movie>)
+    fun loadMovie(movieId: Int, apiCallback: BaseCallback.ApiCaseCallback<MovieDetailResponse>)
 
 }
