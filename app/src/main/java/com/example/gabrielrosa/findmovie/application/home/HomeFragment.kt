@@ -1,13 +1,14 @@
 package com.example.gabrielrosa.findmovie.application.home
 
+import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.SearchView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import com.example.gabrielrosa.findmovie.R
 import com.example.gabrielrosa.findmovie.application.common.entity.Movie
@@ -42,7 +43,7 @@ class HomeFragment: Fragment(), HomeContract.View {
         moviesRecyclerView.adapter       = moviesAdapter
         moviesRecyclerView.layoutManager = LinearLayoutManager(context)
 
-        searchMovie()
+        setupSearchMovie()
     }
 
     override fun showMovies(movie: List<Movie>) {
@@ -68,8 +69,15 @@ class HomeFragment: Fragment(), HomeContract.View {
         moviesProgressBar.visibility = View.GONE
     }
 
-    private fun searchMovie() {
-        
+
+    private fun setupSearchMovie() {
+
+        moviesSearchView.setOnClickListener(object : View.OnClickListener{
+            override fun onClick(p0: View?) {
+                moviesSearchView.isIconified = false
+            }
+        })
+
         moviesSearchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(p0: String?): Boolean {
                 if (p0 != null) {

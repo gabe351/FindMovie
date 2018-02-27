@@ -11,6 +11,9 @@ import com.example.gabrielrosa.findmovie.R
 import com.example.gabrielrosa.findmovie.application.common.entity.Movie
 import com.example.gabrielrosa.findmovie.application.moviedetail.MovieDetailActivity
 import com.squareup.picasso.Picasso
+import android.support.v4.content.ContextCompat.startActivity
+
+
 
 /**
  * Created by gabrielrosa on 24/02/18.
@@ -56,7 +59,15 @@ class MoviesAdapter(): RecyclerView.Adapter<MovieItemViewHolder>() {
                 startActivity(context, intent,null)
         }
 
-//        TODO: Implement click on buttons
+
+        holder?.shareButton?.setOnClickListener {
+            val sendIntent = Intent()
+            sendIntent.action = Intent.ACTION_SEND
+            sendIntent.putExtra(Intent.EXTRA_TEXT, context.resources.getString(R.string.share_hint).plus(movie.originalTitle))
+            sendIntent.type = "text/plain"
+            Intent.createChooser(sendIntent, context.resources.getString(R.string.share_via))
+            startActivity(context, sendIntent, null)
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): MovieItemViewHolder {

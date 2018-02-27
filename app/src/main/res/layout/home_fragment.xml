@@ -2,10 +2,11 @@
 <LinearLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="@color/lightGray"
-    >
+    tools:context=".application.home.HomeActivity">
 
 
     <android.support.v7.widget.SearchView
@@ -17,10 +18,9 @@
         android:elevation="5dp"
         app:queryHint="@string/app_name"
         android:soundEffectsEnabled="true"
+        android:clickable="true"
+        android:focusable="true"
         />
-
-
-
 
     <RelativeLayout
         android:layout_width="match_parent"
