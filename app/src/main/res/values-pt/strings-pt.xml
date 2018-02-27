@@ -2,9 +2,17 @@
 <resources>
     <string name="app_name">Find Movie</string>
 
-    <string name="description">Descrição: </string>
-    <string name="detail">Detalhes</string>
-    <string name="share">Compartilhar</string>
-    <string name="release_date">Data de lançamento: </string>
+    <string name="error_message">Houveram erros ao carregar os dados</string>
 
+    <string name="empty_movies">Nehum filme encontrado para o texto buscado, tente usar outras palavras </string>
+
+    <string name="detail">Detalhes</string>
+    <string name="description">Descrição: </string>
+    <string name="movie_detail">Detalhes do filme</string>
+    <string name="share">Compartilhar</string>
+    <string name="release_year">Ano de lançamento: </string>
+    <string name="movie_status">Situação do filme: </string>
+    <string name="producer">Produtora: </string>
+
+    <string name="ipsum">Mussum Ipsum, cacilds vidis litro abertis. Quem manda na minha terra sou euzis! Admodum accumsan disputationi eu sit. Vide electram sadipscing et per. Suco de cevadiss, é um leite divinis, qui tem lupuliz, matis, aguis e fermentis. Suco de cevadiss deixa as pessoas mais interessantis. Manduma pindureta quium dia nois paga. Posuere libero varius. Nullam a nisl ut ante blandit hendrerit. Aenean sit amet nisi. Per aumento de cachacis, eu reclamis. Mé faiz elementum girarzis, nisi eros vermeio.</string>
 </resources>

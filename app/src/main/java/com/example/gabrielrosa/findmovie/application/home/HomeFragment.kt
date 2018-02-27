@@ -8,6 +8,7 @@ import android.support.v7.widget.SearchView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.example.gabrielrosa.findmovie.R
 import com.example.gabrielrosa.findmovie.application.common.entity.Movie
 import com.example.gabrielrosa.findmovie.application.common.injection.InjectionUseCase
@@ -46,15 +47,18 @@ class HomeFragment: Fragment(), HomeContract.View {
     }
 
     override fun showMovies(movie: List<Movie>) {
+        moviesRecyclerView.visibility = View.VISIBLE
+        emptyDataText.visibility      = View.GONE
         moviesAdapter?.replaceData(movie)
     }
 
     override fun showNoMovies() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        moviesRecyclerView.visibility = View.GONE
+        emptyDataText.visibility      = View.VISIBLE
     }
 
     override fun showErrorMessage(errorMessage: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        Toast.makeText(activity, resources.getString(R.string.error_message), Toast.LENGTH_LONG).show();
     }
 
     override fun showLoader() {

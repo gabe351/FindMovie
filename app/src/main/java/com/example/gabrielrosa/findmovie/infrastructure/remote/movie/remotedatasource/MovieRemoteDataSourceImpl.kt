@@ -23,10 +23,13 @@ class MovieRemoteDataSourceImpl(private val api: MovieApiDataSourceImpl): MovieR
             override fun onResponse(call: Call<MovieResponse?>?, response: Response<MovieResponse?>?) {
                 response.let {
                     if (it != null) {
-                        apiCallback.onSuccess(it.body()?.results!!)
+                        if(it.body()?.results!!.isEmpty()) {
+                            apiCallback.onEmptyData()
+                        } else {
+                            apiCallback.onSuccess(it.body()?.results!!)
+                        }
                     }
                 }
-
             }
 
             override fun onFailure(call: Call<MovieResponse?>?, t: Throwable?) {
