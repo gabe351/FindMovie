@@ -42,7 +42,6 @@ class HomeFragment: Fragment(), HomeContract.View {
         moviesRecyclerView.adapter       = moviesAdapter
         moviesRecyclerView.layoutManager = LinearLayoutManager(context)
 
-        mainToolbarSetup()
         searchMovie()
     }
 
@@ -69,16 +68,8 @@ class HomeFragment: Fragment(), HomeContract.View {
         moviesProgressBar.visibility = View.GONE
     }
 
-    private fun mainToolbarSetup() {
-        if (moviesToolBar != null) {
-            (activity as AppCompatActivity).setSupportActionBar(moviesToolBar)
-            (activity as AppCompatActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(false)
-            (activity as AppCompatActivity).supportActionBar!!.setDisplayShowHomeEnabled(false)
-            (activity as AppCompatActivity).supportActionBar!!.setDisplayShowTitleEnabled(false)
-        }
-    }
-
     private fun searchMovie() {
+        
         moviesSearchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(p0: String?): Boolean {
                 if (p0 != null) {
