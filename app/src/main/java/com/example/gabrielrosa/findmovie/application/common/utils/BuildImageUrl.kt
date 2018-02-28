@@ -7,7 +7,7 @@ class BuildImageUrl {
 
     companion object {
         fun build(path: String): String {
-            val imageBaseUrl: String = "https://image.tmdb.org/t/p/w780"
+            val imageBaseUrl = "https://image.tmdb.org/t/p/w780"
             val stringBuilder = StringBuilder()
 
             stringBuilder.append(imageBaseUrl).append(path)
